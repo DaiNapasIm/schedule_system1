@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Главная страница</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="mt-4">Добро пожаловать в систему расписания</h1>
+        
+        <h2 class="mt-4">Выберите группу</h2>
+        <form method="GET" action="{% url 'schedule_list' %}" class="form-inline mb-4">
+            <div class="form-group">
+                <select name="group_id" class="form-control" required>
+                    <option value="" disabled selected>Выберите группу</option>
+                    {% for group in groups %}
+                        <option value="{{ group.id }}">{{ group.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary ml-2">Показать расписание</button>
+        </form>
+
+        <nav>
+            <h3 class="mt-4">Навигация</h3>
+            <ul class="list-unstyled">
+                <li><a href="{% url 'schedule_list' %}" class="btn btn-link">Список расписаний</a></li>
+                <li><a href="{% url 'group_list' %}" class="btn btn-link">Список групп</a></li>
+                <li><a href="{% url 'teacher_list' %}" class="btn btn-link">Список преподавателей</a></li>
+                <li><a href="{% url 'add_schedule' %}" class="btn btn-link">Добавить расписание</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

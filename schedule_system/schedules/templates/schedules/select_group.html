@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Выбор группы</title>
+</head>
+<body>
+    <h1>Выберите группу</h1>
+    <ul>
+        {% for group in groups %}
+        <li>
+            <a href="{% url 'group_schedule' group.pk %}">{{ group.name }}</a>
+        </li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'select_teacher' %}">Выбрать преподавателя</a>
+</body>
+</html>
